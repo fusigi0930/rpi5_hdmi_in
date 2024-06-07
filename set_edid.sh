@@ -1,1 +1,3 @@
-v4l2-ctl -d /dev/v4l2-subdev2 --set-edid=file=720p60edid
+EDID_FILE=${1:-1080p30edid}
+
+v4l2-ctl -d /dev/v4l-subdev2 --set-edid=file=$EDID_FILE
