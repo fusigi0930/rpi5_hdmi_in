@@ -7,7 +7,8 @@ v4l2-ctl -d /dev/v4l-subdev2 --set-edid=file=1080p30.edid --fix-edid-checksums
 sleep 3
 v4l2-ctl -d /dev/v4l-subdev2 --query-dv-timings
 sleep 3
-v4l2-ctl -d /dev/v4l-subdev2 --set-dv-bt-timings index=10
+#v4l2-ctl -d /dev/v4l-subdev2 --set-dv-bt-timings index=10
+v4l2-ctl -d /dev/v4l-subdev2 --set-dv-bt-timings index=12
 sleep 2
 v4l2-ctl -V
 
