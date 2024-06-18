@@ -3,13 +3,18 @@ END=$(v4l2-ctl --list-devices | grep rpivid -n | awk -F":" '{print $1}')
 NODE=$(v4l2-ctl --list-devices | sed -n "${BEGIN},${END}p" | grep media)
 
 v4l2-ctl -d /dev/v4l-subdev2 --clear-edid
-v4l2-ctl -d /dev/v4l-subdev2 --set-edid=file=1080p30.edid --fix-edid-checksums
+v4l2-ctl -d /dev/v4l-subdev2 --set-edid=file=1080p60edid --fix-edid-checksums
 sleep 3
-v4l2-ctl -d /dev/v4l-subdev2 --query-dv-timings
-sleep 3
+v4l2-ctl -v width=1920,height=1080,pixelformat=UYVY
+#v4l2-ctl -d /dev/v4l-subdev2 --query-dv-timings
+#sleep 3
 #v4l2-ctl -d /dev/v4l-subdev2 --set-dv-bt-timings index=10
 v4l2-ctl -d /dev/v4l-subdev2 --set-dv-bt-timings index=12
-sleep 2
+sleep 3
+v4l2-ctl -V
+sleep 3
+v4l2-ctl -d /dev/v4l-subdev2 --set-dv-bt-timings index=12
+sleep 3
 v4l2-ctl -V
 
 # reset links
